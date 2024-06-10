@@ -1,20 +1,42 @@
-import { useState } from "react";
 import "./App.css";
 import { useReducer } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const countReducer = (oldCount, action) => {
+    // if (action === "UP") {
+    //   return oldCount + 1;
+    // } else if (action === "DOWN") {
+    //   return oldCount - 1;
+    // } else if (action === "RESET") {
+    //   return 0;
+    // }
+
+    switch (action) {
+      case "UP":
+        return oldCount + 1;
+      case "DOWN":
+        return oldCount - 1;
+      case "RESET":
+        return 0;
+      default:
+        return oldCount;
+    }
+  };
+  const [count, countDispatch] = useReducer(countReducer, 0);
 
   const down = () => {
-    setCount(count - 1);
+    // setCount(count - 1);
+    countDispatch("DOWN");
   };
 
   const reset = () => {
-    setCount(0);
+    // setCount(0);
+    countDispatch("RESET");
   };
 
   const up = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
+    countDispatch("UP");
   };
 
   return (
@@ -39,12 +61,13 @@ function App() {
       </article>
 
       <article className="box">
-        <h2>useState test</h2>
+        <h2>useReducer test</h2>
         <form>
           <input type="button" value="-" onClick={down} />
           <input type="button" value="0" onClick={reset} />
           <input type="button" value="+" onClick={up} />
         </form>
+        <span>{count}</span>
       </article>
     </>
   );

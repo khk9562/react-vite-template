@@ -1,21 +1,14 @@
+import { useState } from "react";
 import "./App.css";
 import { useReducer } from "react";
 
 function App() {
   const countReducer = (oldCount, action) => {
-    // if (action === "UP") {
-    //   return oldCount + 1;
-    // } else if (action === "DOWN") {
-    //   return oldCount - 1;
-    // } else if (action === "RESET") {
-    //   return 0;
-    // }
-
-    switch (action) {
+    switch (action.type) {
       case "UP":
-        return oldCount + 1;
+        return oldCount + action.num;
       case "DOWN":
-        return oldCount - 1;
+        return oldCount - action.num;
       case "RESET":
         return 0;
       default:
@@ -23,20 +16,23 @@ function App() {
     }
   };
   const [count, countDispatch] = useReducer(countReducer, 0);
+  const [num, setNum] = useState(1);
 
   const down = () => {
     // setCount(count - 1);
-    countDispatch("DOWN");
+    countDispatch({ type: "DOWN", num: num });
   };
 
   const reset = () => {
     // setCount(0);
-    countDispatch("RESET");
+    // countDispatch("RESET");
+    countDispatch({ type: "RESET", num: num });
   };
 
   const up = () => {
     // setCount(count + 1);
-    countDispatch("UP");
+    // countDispatch("UP");
+    countDispatch({ type: "UP", num: num });
   };
 
   return (
@@ -66,6 +62,11 @@ function App() {
           <input type="button" value="-" onClick={down} />
           <input type="button" value="0" onClick={reset} />
           <input type="button" value="+" onClick={up} />
+          <input
+            type="text"
+            value={num}
+            onChange={(e) => setNum(Number(e.target.value))}
+          />
         </form>
         <span>{count}</span>
       </article>

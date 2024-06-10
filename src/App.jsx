@@ -1,40 +1,43 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
-import { useReducer } from "react";
+// import { useReducer } from "react";
+import useStore from "./stores/count";
 import { Button } from "./components/ui/button";
 
 function App() {
-  const countReducer = (oldCount, action) => {
-    switch (action.type) {
-      case "UP":
-        return oldCount + action.num;
-      case "DOWN":
-        return oldCount - action.num;
-      case "RESET":
-        return 0;
-      default:
-        return oldCount;
-    }
-  };
-  const [count, countDispatch] = useReducer(countReducer, 0);
-  const [num, setNum] = useState(1);
+  const { count, num, setNum, up, down, reset } = useStore();
 
-  const down = () => {
-    // setCount(count - 1);
-    countDispatch({ type: "DOWN", num: num });
-  };
+  // const countReducer = (oldCount, action) => {
+  //   switch (action.type) {
+  //     case "UP":
+  //       return oldCount + action.num;
+  //     case "DOWN":
+  //       return oldCount - action.num;
+  //     case "RESET":
+  //       return 0;
+  //     default:
+  //       return oldCount;
+  //   }
+  // };
+  // const [count, countDispatch] = useReducer(countReducer, 0);
+  // const [num, setNum] = useState(1);
 
-  const reset = () => {
-    // setCount(0);
-    // countDispatch("RESET");
-    countDispatch({ type: "RESET", num: num });
-  };
+  // const down = () => {
+  //   // setCount(count - 1);
+  //   countDispatch({ type: "DOWN", num: num });
+  // };
 
-  const up = () => {
-    // setCount(count + 1);
-    // countDispatch("UP");
-    countDispatch({ type: "UP", num: num });
-  };
+  // const reset = () => {
+  //   // setCount(0);
+  //   // countDispatch("RESET");
+  //   countDispatch({ type: "RESET", num: num });
+  // };
+
+  // const up = () => {
+  //   // setCount(count + 1);
+  //   // countDispatch("UP");
+  //   countDispatch({ type: "UP", num: num });
+  // };
 
   return (
     <>

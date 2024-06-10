@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <article className="box">
+      {/* <article className="box">
         <h1>React + Vite Test</h1>
 
         <form
@@ -55,17 +55,14 @@ function App() {
 
           <input type="submit" value="제출" />
         </form>
-      </article>
+      </article> */}
 
       <article className="box">
         <h2>useReducer test</h2>
         <form>
-          {/* <input type="button" value="-" onClick={down} /> */}
           <Button onClick={down}>-</Button>
-          {/* <input type="button" value="0" onClick={reset} /> */}
           <Button onClick={reset}>0</Button>
           <Button onClick={up}>+</Button>
-          {/* <input type="button" value="+" onClick={up} /> */}
           <input
             type="text"
             value={num}

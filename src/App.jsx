@@ -1,24 +1,29 @@
+import { useState } from "react";
 import "./App.css";
+import { useReducer } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const down = () => {
+    setCount(count - 1);
+  };
+
+  const reset = () => {
+    setCount(0);
+  };
+
+  const up = () => {
+    setCount(count + 1);
+  };
+
   return (
     <>
-      <article
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <article className="box">
         <h1>React + Vite Test</h1>
 
         <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "12px",
-          }}
+          className="box"
           onSubmit={(event) => {
             event.preventDefault();
             console.log("submit", event);
@@ -30,6 +35,15 @@ function App() {
           <textarea name="body" placeholder="body" />
 
           <input type="submit" value="제출" />
+        </form>
+      </article>
+
+      <article className="box">
+        <h2>useState test</h2>
+        <form>
+          <input type="button" value="-" onClick={down} />
+          <input type="button" value="0" onClick={reset} />
+          <input type="button" value="+" onClick={up} />
         </form>
       </article>
     </>

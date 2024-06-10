@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { useReducer } from "react";
+import { Button } from "./components/ui/button";
 
 function App() {
   const countReducer = (oldCount, action) => {
@@ -59,9 +60,12 @@ function App() {
       <article className="box">
         <h2>useReducer test</h2>
         <form>
-          <input type="button" value="-" onClick={down} />
-          <input type="button" value="0" onClick={reset} />
-          <input type="button" value="+" onClick={up} />
+          {/* <input type="button" value="-" onClick={down} /> */}
+          <Button onClick={down}>-</Button>
+          {/* <input type="button" value="0" onClick={reset} /> */}
+          <Button onClick={reset}>0</Button>
+          <Button onClick={up}>+</Button>
+          {/* <input type="button" value="+" onClick={up} /> */}
           <input
             type="text"
             value={num}

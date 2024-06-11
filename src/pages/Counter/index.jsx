@@ -1,6 +1,7 @@
 import useStore from "@/stores/count";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 const Counter = () => {
   const { count, num, setNum, up, down, reset } = useStore();
@@ -38,6 +39,9 @@ const Counter = () => {
         />
       </form>
       <span>{count}</span>
+      <Button variant="outline" size="sm" asChild>
+        <Link to={"/"}>홈으로 가기</Link>
+      </Button>
     </article>
   );
 };

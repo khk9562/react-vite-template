@@ -1,7 +1,8 @@
 // import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/layouts/Header/Header";
+import axios from "axios";
 
 const FormPage = () => {
   const [data, setData] = useState([]);
@@ -13,19 +14,37 @@ const FormPage = () => {
     });
   };
 
-  useEffect(() => {
-    console.log("data", data);
-  }, [data]);
+  const getData = (e) => {
+    e.preventDefault();
+    axios
+      .post("url", data, {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      })
+      .then(function (res) {
+        // 성공 핸들링
+        console.log(res.data);
+      })
+      .catch(function (error) {
+        // 에러 핸들링
+        console.log("getData 실행 data:", data);
+        console.log(error);
+      })
+      .then(function () {
+        // 항상 실행되는 영역
+      });
+  };
 
   return (
     <>
       <Header title="폼" />
-      <form className="form">
+      <form className="form" onSubmit={getData}>
         <label name="test1">테스트1</label>
         <input
           type="text"
           name="test1"
           className="input"
+          autoComplete="off"
           value={data.test1 || ""}
           onChange={handleInputChange}
         />
@@ -35,6 +54,7 @@ const FormPage = () => {
           type="text"
           name="test2"
           className="input"
+          autoComplete="off"
           value={data.test2 || ""}
           onChange={handleInputChange}
         />

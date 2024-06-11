@@ -1,6 +1,8 @@
-import React from "react";
+// import React from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import NotFound from "./pages/NotFound";
 
 const pages = import.meta.glob("./pages/**/*.jsx", { eager: true });
 const routes = [];
@@ -39,15 +41,23 @@ if (routes.length === 0) {
   throw new Error("No routes found. Check your page components and paths.");
 }
 
-const router = createBrowserRouter(
-  routes.map(({ Element, ErrorBoundary, ...rest }) => ({
+const router = createBrowserRouter([
+  ...routes.map(({ Element, ErrorBoundary, ...rest }) => ({
     ...rest,
     element: <Element />,
-    ...(ErrorBoundary && { errorElement: React.createElement(ErrorBoundary) }),
-  }))
-);
+    ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
+  })),
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]);
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
+  );
 };
 
 export default App;

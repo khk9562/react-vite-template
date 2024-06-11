@@ -1,9 +1,9 @@
-const Main = () => {
+const Home = () => {
   return (
     <article className="box">
-      <h2>??? test</h2>
+      <h2>여기가 메인 홈</h2>
     </article>
   );
 };
 
-export default Main;
+export default Home;

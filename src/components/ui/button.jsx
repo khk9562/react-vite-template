@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+
 import PropTypes from "prop-types";
 
 const buttonVariants = cva(
@@ -50,17 +51,9 @@ Button.displayName = "Button";
 
 Button.propTypes = {
   className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "default",
-    "destructive",
-    "outline",
-    "secondary",
-    "ghost",
-    "link",
-  ]),
-  size: PropTypes.oneOf(["default", "sm", "lg", "icon"]),
-  asChild: PropTypes.bool,
-  // onClick: PropTypes.func,
+  variant: PropTypes.string,
+  size: PropTypes.string,
+  asChild: PropTypes.boolean,
 };
 
 export { Button, buttonVariants };

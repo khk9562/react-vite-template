@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -15,8 +17,30 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      // 폴백 UI를 커스텀하여 렌더링할 수 있습니다.
-      return <h1>에러났어요</h1>;
+      return (
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            gap: "1rem",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "2rem",
+              fontWeight: "bold",
+            }}
+          >
+            {`알 수 없는 에러가 발생했습니다. :()`}
+          </h1>
+          <Button variant="destructive" size="sm">
+            <Link to={"/"}>홈으로 가기</Link>
+          </Button>
+        </article>
+      );
     }
 
     return this.props.children;

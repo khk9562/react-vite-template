@@ -35,7 +35,7 @@ for (const path of Object.keys(pages)) {
   });
 }
 
-console.log("Generated routes:", routes);
+console.log("routes", routes);
 
 if (routes.length === 0) {
   throw new Error("No routes found. Check your page components and paths.");

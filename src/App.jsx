@@ -1,81 +1,53 @@
-// import { useState } from "react";
+import React from "react";
 import "./App.css";
-// import { useReducer } from "react";
-import useStore from "./stores/count";
-import { Button } from "./components/ui/button";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-function App() {
-  const { count, num, setNum, up, down, reset } = useStore();
+const pages = import.meta.glob("./pages/**/*.jsx", { eager: true });
+const routes = [];
 
-  // const countReducer = (oldCount, action) => {
-  //   switch (action.type) {
-  //     case "UP":
-  //       return oldCount + action.num;
-  //     case "DOWN":
-  //       return oldCount - action.num;
-  //     case "RESET":
-  //       return 0;
-  //     default:
-  //       return oldCount;
-  //   }
-  // };
-  // const [count, countDispatch] = useReducer(countReducer, 0);
-  // const [num, setNum] = useState(1);
+for (const path of Object.keys(pages)) {
+  const fileName = path.match(/\.\/pages\/(.*)\.jsx$/)?.[1];
+  if (!fileName) {
+    continue;
+  }
 
-  // const down = () => {
-  //   // setCount(count - 1);
-  //   countDispatch({ type: "DOWN", num: num });
-  // };
+  const normalizedPathName = fileName.includes("$")
+    ? fileName.replace("$", ":")
+    : fileName.replace(/\/index/, "");
 
-  // const reset = () => {
-  //   // setCount(0);
-  //   // countDispatch("RESET");
-  //   countDispatch({ type: "RESET", num: num });
-  // };
+  // 페이지 컴포넌트가 제대로 불러와졌는지 확인
+  const pageComponent = pages[path].default;
+  if (!pageComponent) {
+    console.error(
+      `Component for path ${path} is not found or not exported correctly.`
+    );
+    continue;
+  }
 
-  // const up = () => {
-  //   // setCount(count + 1);
-  //   // countDispatch("UP");
-  //   countDispatch({ type: "UP", num: num });
-  // };
-
-  return (
-    <>
-      {/* <article className="box">
-        <h1>React + Vite Test</h1>
-
-        <form
-          className="box"
-          onSubmit={(event) => {
-            event.preventDefault();
-            console.log("submit", event);
-            console.log("title", event.target.title.value);
-            console.log("body", event.target.body.value);
-          }}
-        >
-          <input type="text" name="title" placeholder="title" />
-          <textarea name="body" placeholder="body" />
-
-          <input type="submit" value="제출" />
-        </form>
-      </article> */}
-
-      <article className="box">
-        <h2>useReducer test</h2>
-        <form>
-          <Button onClick={down}>-</Button>
-          <Button onClick={reset}>0</Button>
-          <Button onClick={up}>+</Button>
-          <input
-            type="text"
-            value={num}
-            onChange={(e) => setNum(Number(e.target.value))}
-          />
-        </form>
-        <span>{count}</span>
-      </article>
-    </>
-  );
+  routes.push({
+    path: fileName === "index" ? "/" : `/${normalizedPathName.toLowerCase()}`,
+    Element: pages[path].default,
+    loader: pages[path]?.loader,
+    action: pages[path]?.action,
+    ErrorBoundary: pages[path]?.ErrorBoundary,
+  });
 }
+
+console.log("Generated routes:", routes);
+
+if (routes.length === 0) {
+  throw new Error("No routes found. Check your page components and paths.");
+}
+
+const router = createBrowserRouter(
+  routes.map(({ Element, ErrorBoundary, ...rest }) => ({
+    ...rest,
+    element: <Element />,
+    ...(ErrorBoundary && { errorElement: React.createElement(ErrorBoundary) }),
+  }))
+);
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 
 export default App;

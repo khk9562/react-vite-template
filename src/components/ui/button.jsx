@@ -37,7 +37,6 @@ const buttonVariants = cva(
 const Button = React.forwardRef(
   ({ className, variant, size, asChild = false, onClick, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    console.log("onClick", onClick);
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}

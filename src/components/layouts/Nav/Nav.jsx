@@ -12,6 +12,9 @@ const Nav = ({ children }) => {
         <li>
           <Link to={"/counter"}>카운터</Link>
         </li>
+        <li>
+          <Link to={"/formpage"}>폼</Link>
+        </li>
         {children}
       </ul>
     </nav>

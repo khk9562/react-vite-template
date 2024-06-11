@@ -40,10 +40,6 @@ const Button = React.forwardRef(
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
-        // onClick={(e) => {
-        //   e.preventDefault();
-        //   onClick();
-        // }}
         ref={ref}
         {...props}
       />

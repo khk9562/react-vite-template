@@ -35,15 +35,15 @@ const buttonVariants = cva(
 );
 
 const Button = React.forwardRef(
-  ({ className, variant, size, asChild = false, onClick, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
-        onClick={(e) => {
-          e.preventDefault();
-          onClick();
-        }}
+        // onClick={(e) => {
+        //   e.preventDefault();
+        //   onClick();
+        // }}
         ref={ref}
         {...props}
       />
@@ -64,7 +64,7 @@ Button.propTypes = {
   ]),
   size: PropTypes.oneOf(["default", "sm", "lg", "icon"]),
   asChild: PropTypes.bool,
-  onClick: PropTypes.func,
+  // onClick: PropTypes.func,
 };
 
 export { Button, buttonVariants };

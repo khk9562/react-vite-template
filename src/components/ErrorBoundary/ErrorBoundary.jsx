@@ -36,7 +36,7 @@ class ErrorBoundary extends React.Component {
           >
             {`알 수 없는 에러가 발생했습니다. :()`}
           </h1>
-          <Button variant="destructive" size="sm">
+          <Button variant="destructive" size="sm" asChild>
             <Link to={"/"}>홈으로 가기</Link>
           </Button>
         </article>

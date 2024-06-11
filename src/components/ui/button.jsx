@@ -53,7 +53,7 @@ Button.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.string,
   size: PropTypes.string,
-  asChild: PropTypes.boolean,
+  asChild: PropTypes.any,
 };
 
 export { Button, buttonVariants };

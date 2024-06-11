@@ -1,3 +1,9 @@
+.input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 5px;
+}
 .box {
   display: flex;
   flex-direction: column;
@@ -6,4 +12,11 @@
   margin: 25px;
   padding: 12px 12px 18px;
   background-color: #eee;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }

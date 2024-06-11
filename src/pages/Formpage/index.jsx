@@ -1,31 +1,45 @@
-import {
-  useFormField,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField,
-} from "@/components/ui/form";
+// import React from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const FormPage = () => {
-  const form = useFormField();
+  const [data, setData] = useState([]);
+
+  const handleInputChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
+
   return (
-    <Form>
-      <FormField
-        control={form.control}
-        name="폼이름"
-        render={() => (
-          <FormItem>
-            <FormLabel />
-            <FormControl>이거 먼데</FormControl>
-            <FormDescription />
-            <FormMessage />
-          </FormItem>
-        )}
+    <form className="form">
+      <label name="test1">테스트1</label>
+      <input
+        type="text"
+        name="test1"
+        className="input"
+        value={data.test1 || ""}
+        onChange={handleInputChange}
       />
-    </Form>
+
+      <label name="test2">테스트2</label>
+      <input
+        type="text"
+        name="test2"
+        className="input"
+        value={data.test2 || ""}
+        onChange={handleInputChange}
+      />
+
+      <Button asChild>
+        <input type="submit" value="제출" />
+      </Button>
+    </form>
   );
 };
 

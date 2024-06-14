@@ -1,6 +1,6 @@
 import useStore from "@/stores/count";
 import { Button } from "react-bootstrap";
-import { Input } from "@/components/ui/input";
+import { Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "@/components/layouts/Header/Header";
 
@@ -19,7 +19,7 @@ const Counter = () => {
             gap: "2px",
           }}
         >
-          <Button asChild>
+          {/* <Button asChild>
             <button type="button" onClick={down}>
               -
             </button>
@@ -28,23 +28,30 @@ const Counter = () => {
             <button type="button" onClick={reset}>
               0
             </button>
+          </Button> */}
+          <Button variant="dark" onClick={down}>
+            -
           </Button>
-          <Button asChild>
-            <button type="button" onClick={up}>
-              +
-            </button>
+          <Button variant="dark" onClick={reset}>
+            0
           </Button>
-          <Input
+          <Button variant="dark" onClick={up}>
+            +
+          </Button>
+
+          <Form.Control
             style={{ width: "50px" }}
-            type="text"
             value={num}
             onChange={(e) => setNum(Number(e.target.value))}
           />
         </form>
         <span>{count}</span>
-        <Button variant="outline" size="sm" asChild>
-          <Link to={"/"}>홈으로 가기</Link>
-        </Button>
+
+        <Link to={"/"}>
+          <Button variant="light" onClick={up}>
+            홈으로 가기
+          </Button>
+        </Link>
       </article>
     </>
   );

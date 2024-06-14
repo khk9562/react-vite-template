@@ -55,7 +55,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <ErrorBoundary>
-      <RouterProvider router={router} />
+      <div className="container-fluid" style={{ padding: "0" }}>
+        <RouterProvider router={router} />
+      </div>
     </ErrorBoundary>
   );
 };

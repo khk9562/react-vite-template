@@ -58,8 +58,7 @@ const FormPage = () => {
           value={data.test2 || ""}
           onChange={handleInputChange}
         />
-
-        <Button asChild>
+        <Button variant="light">
           <input type="submit" value="제출" />
         </Button>
       </form>

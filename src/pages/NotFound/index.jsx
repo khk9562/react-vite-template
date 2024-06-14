@@ -21,9 +21,9 @@ const NotFound = () => {
       >
         404 NOT FOUND
       </h1>
-      <Button variant="destructive" size="sm" asChild>
-        <Link to={"/"}>홈으로 가기</Link>
-      </Button>
+      <Link to={"/"}>
+        <Button variant="light">홈으로 가기</Button>
+      </Link>
     </article>
   );
 };

@@ -1,6 +1,6 @@
 import useStore from "@/stores/count";
 import { Button } from "react-bootstrap";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "@/components/layouts/Header/Header";
 
@@ -48,9 +48,7 @@ const Counter = () => {
         <span>{count}</span>
 
         <Link to={"/"}>
-          <Button variant="light" onClick={up}>
-            홈으로 가기
-          </Button>
+          <Button variant="light">홈으로 가기</Button>
         </Link>
       </article>
     </>

@@ -40,6 +40,18 @@ button {
   outline: none;
 }
 
+/* 말줄임 */
+.ellipsis {
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* 원하는 줄 수로 해당 모듈 CSS에서 조정 */
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+}
+
 @media screen and (max-width: 768px) {
   /* something */
 }

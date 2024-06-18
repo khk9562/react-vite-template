@@ -9,7 +9,7 @@ const Item = ({ data }) => {
       <Card.Img src={data.image} alt={data.title} />
       <Card.Body className={styles.cardBody}>
         <Card.Title className={styles.cardTit}>{data.title}</Card.Title>
-        <Card.Subtitle className={styles.cardDesc}>
+        <Card.Subtitle className={`ellipsis ${styles.cardDesc} `}>
           {data.content}
         </Card.Subtitle>
         <Card.Text className={styles.cardPrice}>{data.price}</Card.Text>

@@ -1,8 +1,12 @@
 .list {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   /* justify-content: space-between; */
   padding: 0;
   margin: 0;
   gap: 12px;
+  margin: 12px;
+  display: -webkit-box;
+  overflow-x: scroll;
+  max-width: 100%;
 }

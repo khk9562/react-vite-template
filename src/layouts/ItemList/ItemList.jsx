@@ -1,13 +1,15 @@
+import React, { useState, useRef } from "react";
 import Item from "@/components/Item/Item";
 import styles from "./ItemList.module.css";
+import DraggableScroller from "./DraggableScroller";
 
 const ItemList = ({ items }) => {
   return (
-    <div className={styles.list}>
+    <DraggableScroller>
       {items.map((item) => (
         <Item key={item.id} data={item} />
       ))}
-    </div>
+    </DraggableScroller>
   );
 };
 

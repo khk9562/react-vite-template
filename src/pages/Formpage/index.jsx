@@ -1,7 +1,7 @@
 // import React from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import Header from "@/components/layouts/Header/Header";
+import Header from "@/layouts/Header/Header";
 import axios from "axios";
 
 const FormPage = () => {

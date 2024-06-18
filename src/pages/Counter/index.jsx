@@ -2,7 +2,7 @@ import useStore from "@/stores/count";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "@/components/layouts/Header/Header";
+import Header from "@/layouts/Header/Header";
 
 const Counter = () => {
   const { count, num, setNum, up, down, reset } = useStore();

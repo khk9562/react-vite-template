@@ -12,19 +12,21 @@
   }
 
   & .cardTit {
-    color: red;
+    color: #222;
+    font-weight: 600;
   }
 
   & .cardDesc {
-    color: blue;
+    color: #555;
     font-weight: 300;
     font-size: 13px;
+    -webkit-line-clamp: 2;
   }
 
   & .cardPrice {
-    color: green;
+    color: #191919;
     text-align: end;
-    font-weight: 700;
+    /* font-weight: 600; */
   }
 
   & .cardPrice::before {

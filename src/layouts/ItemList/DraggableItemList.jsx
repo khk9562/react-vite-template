@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
 import Item from "@/components/Item/Item";
-import styles from "./ItemList.module.css";
 import DraggableScroller from "./DraggableScroller";
 
-const ItemList = ({ items }) => {
+const DraggableItemList = ({ items }) => {
   return (
     <DraggableScroller>
       {items.map((item) => (
@@ -13,4 +12,4 @@ const ItemList = ({ items }) => {
   );
 };
 
-export default ItemList;
+export default DraggableItemList;

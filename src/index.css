@@ -1,5 +1,6 @@
 :root {
-  --point: #ff6f61;
+  --nightColor: #fff;
+  --nightBack: #333;
 }
 html {
   box-sizing: border-box;
@@ -38,6 +39,7 @@ button {
   background-color: transparent;
   outline: none;
 }
+
 @media screen and (max-width: 768px) {
   /* something */
 }
@@ -48,15 +50,21 @@ button {
 
 @media screen and (orientation: portrait) {
   /* 스크린이 세로(가로 길이가 세로 길이만큼 짧아진 시점 이후)일 때만 스타일 적용 */
+  body {
+    color: blue !important;
+  }
 }
 
 @media (hover: hover) {
   /* 사용자가 요소 위에 (마우스 커서를) 올릴 수 있는 능력을 가진 조건인지를 시험할 수 있다 */
 }
 
-@media (prefers-color-scheme: light) {
-  /* 라이트모드에서 적용 */
-}
 @media (prefers-color-scheme: dark) {
-  /* 다크모드에서 적용 */
+  /* 다크모드 */
+  html,
+  body,
+  * {
+    color: var(--nightColor);
+    background-color: var(--nightBack);
+  }
 }

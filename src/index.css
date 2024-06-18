@@ -1,13 +1,20 @@
+:root {
+  --point: #ff6f61;
+}
+html {
+  box-sizing: border-box;
+  letter-spacing: -0.2px;
+}
 html,
 body {
   margin: 0;
   padding: 0;
 }
-html,
-body,
-* {
-  box-sizing: border-box;
-  letter-spacing: -0.2px;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  letter-spacing: inherit;
 }
 h1,
 h2,

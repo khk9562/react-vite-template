@@ -1,12 +1,10 @@
 .list {
-  display: flex;
-  /* flex-wrap: wrap; */
-  /* justify-content: space-between; */
+  display: -webkit-box;
+  /* display: flex; */
   padding: 0;
   margin: 0;
-  gap: 12px;
-  margin: 12px;
-  display: -webkit-box;
+  /* gap: 12px; */
+  margin: 24px;
   overflow-x: scroll;
   max-width: 100%;
 }
